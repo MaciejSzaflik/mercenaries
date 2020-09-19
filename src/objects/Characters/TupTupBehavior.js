@@ -6,6 +6,12 @@ export default class TupTupBehavior extends Behavior {
   offset = 10;
   speed = 0.03;
 
+  constructor(speed, offset) {
+    super();
+    this.speed = speed;
+    this.offset = offset;
+  }
+
   init(actor) {
     this.actor = actor;
     this.startPos = actor.position;

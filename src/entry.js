@@ -32,7 +32,7 @@ controls.update();
 
 // renderer
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setClearColor(0x303040, 1);
+renderer.setClearColor(0xd1b384, 1);
 
 // render loop
 const onAnimationFrameHandler = (timeStamp) => {
