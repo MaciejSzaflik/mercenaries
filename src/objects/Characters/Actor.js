@@ -6,7 +6,7 @@ export default class Actor extends Group {
 
     this.name = 'actor';
 
-    let geometry = new BoxBufferGeometry( 1, 1, 1 );
+    let geometry = new BoxBufferGeometry( 10, 10, 1 );
 		let material = new MeshBasicMaterial( {color: 0xffffff} );
 		let cube = new Mesh( geometry, material );
     this.add(cube);

@@ -23,7 +23,7 @@ const seedScene = new SeedScene();
 // scene
 scene.add(seedScene);
 // camera
-camera.position.set(-2,2,5);
+camera.position.set(0,0,5);
 camera.lookAt(new Vector3(0,0,0));
 
 const OrbitControls = require('three-orbit-controls')(THREE);

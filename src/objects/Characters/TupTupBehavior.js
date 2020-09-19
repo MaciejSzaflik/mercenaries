@@ -3,12 +3,14 @@ import { Vector3 } from 'three';
 
 export default class TupTupBehavior extends Behavior {
 
+  offset = 10;
+  speed = 0.03;
+
   init(actor) {
-    this.speed = 0.003;
     this.actor = actor;
     this.startPos = actor.position;
-    this.minX = actor.position.x - 2;
-    this.maxX = actor.position.x + 2;
+    this.minX = actor.position.x - this.offset;
+    this.maxX = actor.position.x + this.offset;
     this.right = true;
   }
 
