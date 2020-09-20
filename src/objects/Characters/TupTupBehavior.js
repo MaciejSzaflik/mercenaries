@@ -21,10 +21,13 @@ export default class TupTupBehavior extends Behavior {
   }
 
   update(delta) {
+
+    let amount = Math.min(this.offset, this.speed*delta);
+
     if(this.right)
-      this.actor.translateX(this.speed * delta);
+      this.actor.translateX(amount);
     else
-      this.actor.translateX(-this.speed * delta);
+      this.actor.translateX(-amount);
 
     if(this.actor.position.x > this.maxX)
       this.right = false;
