@@ -13,7 +13,7 @@ export default class BoidGroup extends Behavior {
 
   addActor(actor)
   {
-    this.boids.push
+    this.boids.push(actor);
   }
 
   update(delta) {
