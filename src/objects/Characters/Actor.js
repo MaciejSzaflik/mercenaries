@@ -1,17 +1,20 @@
 import { Group, BoxBufferGeometry,MeshBasicMaterial, Mesh} from 'three';
 
 export default class Actor extends Group {
-  constructor(behavior, time) {
+  constructor(behavior, time, position) {
     super();
 
     this.name = 'actor';
 
-    let geometry = new BoxBufferGeometry( 1, 1, 1 );
+    let geometry = new BoxBufferGeometry( 10, 10, 1 );
 		let material = new MeshBasicMaterial( {color: 0xffffff} );
-		let cube = new Mesh( geometry, material );
+    let cube = new Mesh( geometry, material );
+    
     this.add(cube);
     this.lastTime = time;
     
+    this.position.set(position.x, position.y, position.z);
+
     this.behavior = behavior;
     this.behavior.init(this);
   }
