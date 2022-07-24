@@ -1,6 +1,8 @@
 import { SimplexNoise } from 'simplex-noise';
-import { Group, BoxBufferGeometry, MeshLambertMaterial, Mesh} from 'three';
+import { BoxBufferGeometry } from 'three';
+import { Group, MeshLambertMaterial, Mesh} from 'three';
 import { mergeBufferGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js'
+import { HexGeometry, sqrt3, sqrt3H, sqrt3Q, scale } from '../Geometries/Hex.js'
 
 export default class Terrain extends Group {
   constructor() {
@@ -8,22 +10,22 @@ export default class Terrain extends Group {
     this.lastTimeStamp = 0
     this.simplexNoise = new SimplexNoise()
 
-    
-		this.material = new MeshLambertMaterial( {color: 0xaaaaaaaa} );
-    this.size = 50
+
+		this.material = new MeshLambertMaterial( {color: 0xaaaaaaaa, wireframe: false} );
+    this.size = 10
     this.fragmentCount = 10
 
     this.noiseDiff = 100
     this.yScale = 20
 
-    this.terrainScale = 10 
+    this.terrainScale = 10
     this.offH = -100
 
     this.offset = 0
     this.creationQueue = []
-    
+
     for(let i = 0; i < this.fragmentCount; i++) {
-      for(let j = 0; j < this.fragmentCount; j++) { 
+      for(let j = 0; j < this.fragmentCount; j++) {
         this.creationQueue.push({
           x: i*this.size,
           y:j * this.size
@@ -55,7 +57,7 @@ export default class Terrain extends Group {
   creationLoop() {
     if(this.creationQueue.length == 0)
       return
-    
+
       let val = this.creationQueue.shift()
       this.createFragment(val.x, val.y)
   }

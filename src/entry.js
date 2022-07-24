@@ -7,7 +7,7 @@
  * 
  */
 
-import { WebGLRenderer, OrthographicCamera, Scene, Vector3 } from 'three';
+import { WebGLRenderer, PerspectiveCamera, Scene, Vector3, GridHelper } from 'three';
 import * as THREE from 'three';
 import Stats from 'stats.js'
 import SeedScene from './objects/Scene.js';
@@ -18,15 +18,15 @@ const scene = new Scene();
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-const camera = new OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, 0.1, 10000 );
+const camera =  new PerspectiveCamera( 45, width / height, 1, 10000 );
 const renderer = new WebGLRenderer({antialias: true});
 const seedScene = new SeedScene();
 
 // scene
 scene.add(seedScene);
 // camera
-camera.position.set(-2,2,-100);
-camera.lookAt(new Vector3(0,0,0));
+camera.position.set(-2,0,-100);
+camera.lookAt(new Vector3(0,-40,0));
 
 controls = new MapControls( camera, renderer.domElement );
 controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
@@ -34,7 +34,7 @@ controls.dampingFactor = 0.05;
 
 controls.screenSpacePanning = false;
 
-controls.minDistance = 100;
+controls.minDistance = 0;
 controls.maxDistance = 500;
 
 controls.maxPolarAngle = Math.PI / 2;

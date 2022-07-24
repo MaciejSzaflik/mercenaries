@@ -3,7 +3,7 @@ import { Group, LightShadow, REVISION } from 'three';
 import Actor from './Characters/Actor.js';
 import Human from './Characters/Human.js';
 import TupTupBehavior from './Characters/TupTupBehavior.js';
-import Terrain from './Terrain/Terrain.js';
+import HexTerrain from './Terrain/HexTerrain.js';
 import BasicLights from './Lights.js'
 
 
@@ -16,6 +16,7 @@ export default class SeedScene extends Group {
 
     this.createTerrain()
     this.createActors();
+
   }
 
   createActors()
@@ -29,7 +30,7 @@ export default class SeedScene extends Group {
 
   createTerrain()
   {
-    this.terrain = new Terrain()
+    this.terrain = new HexTerrain()
     this.add(this.terrain);
   }
 
